@@ -1,0 +1,20 @@
+{
+  "name": "factorial-test",
+  "version": "1.0.0",
+  "description": "Test to submit along the interview process",
+  "author": "Francisco Zurita González",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "frontend": "yarn workspace frontend start",
+    "backend": "yarn workspace backend start:dev",
+    "start": "concurrently --kill-others-on-fail \"yarn backend\"  \"yarn frontend\""
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

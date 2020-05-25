@@ -1,0 +1,24 @@
+.PhoneInputCountryIcon.PhoneInputCountryIcon--border {
+  background-color: transparent;
+  box-shadow: none;
+  height: auto;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PhoneInputInput {
+  margin-left: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+  display: block;
+  width: 100%;
+  line-height: 1.25;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
