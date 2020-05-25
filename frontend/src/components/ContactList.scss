@@ -1,0 +1,10 @@
+.contact-preview {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
+}

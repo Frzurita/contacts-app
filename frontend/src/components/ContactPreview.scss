@@ -1,14 +1,19 @@
-.course {
+$contact-margin: 20px;
+.contact {
   display: flex;
   background-color: #ffffff;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  width: 100%;
-  margin: 20px;
+  width: calc(100% - 2 * $contact-margin);
+  margin: $contact-margin;
   overflow: hidden;
   border: 2px solid #5cb85c;
   color: #898b93;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+  }
 
   & h6 {
     opacity: 0.6;
@@ -43,6 +48,10 @@
     background-color: #5cb85c;
     border-radius: 50%;
 
+    @media (max-width: 600px) {
+      display: none;
+    }
+
     & span {
       color: white;
       font-size: 2rem;
@@ -54,5 +63,9 @@
     padding: 2rem 2rem 2rem 0;
     position: relative;
     width: 100%;
+
+    @media (max-width: 600px) {
+      padding: 2rem;
+    }
   }
 }

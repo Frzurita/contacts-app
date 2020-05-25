@@ -23,7 +23,6 @@ export default function Login(_: RouteComponentProps) {
       dispatch({ type: 'LOAD_USER', user })
       navigate('/')
     } catch (error) {
-      debugger
       setLoading(false)
       if (error.data.statusCode) {
         const messageType = typeof error.data.message

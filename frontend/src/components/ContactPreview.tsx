@@ -45,13 +45,13 @@ export default function ContactPreview({
 
   return (
     <div onClick={goToContactForm}>
-      <div className="course">
-        <div className="course__name">
+      <div className="contact">
+        <div className="contact__name">
           <span>{`${contact.name.split('')[0]}${
             contact.lastName.split('')[0]
           }`}</span>
         </div>
-        <div className="course__info">
+        <div className="contact__info">
           <h2>{contact.lastName}</h2>
           <h3>{contact.name}</h3>
           <div>
@@ -67,7 +67,7 @@ export default function ContactPreview({
             </a>
           </div>
         </div>
-        <div className="course__actions">
+        <div className="contact__actions">
           <button
             className="btn btn-lg btn-danger pull-xs-right"
             type="submit"

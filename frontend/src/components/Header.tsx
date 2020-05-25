@@ -43,17 +43,11 @@ const LoggedInView = ({
 }) => (
   <ul className="nav navbar-nav pull-xs-right">
     <li className="nav-item">
-      <NavLink to="/">Home</NavLink>
-    </li>
-
-    <li className="nav-item">
       <NavLink to="/editor">
         <i className="ion-compose" />
         &nbsp;New Contact
       </NavLink>
     </li>
-
-    <li className="nav-item no-link">{username}</li>
 
     <li className="nav-item no-link pointer" onClick={handleLogout}>
       Logout

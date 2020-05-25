@@ -1,4 +1,5 @@
 import React from 'react'
+import './ContactList.scss'
 import ContactPreview from './ContactPreview'
 import { getContacts } from '../api/ContactsAPI'
 import useContacts from '../context/contacts'
