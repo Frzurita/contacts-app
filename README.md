@@ -1,6 +1,6 @@
 # Contacts app
 
-This is an example of product built in nestJS and ReactJS using Postgres as a data base.
+This is an example of a product built in nestJS and ReactJS using Postgres as a data base.
 
 ## How to use it
 
