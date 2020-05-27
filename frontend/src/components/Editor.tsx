@@ -66,7 +66,6 @@ export default function Editor({
 
   const handleChangePhone = (phoneNumber: string) => {
     // @ts-ignore
-    console.log(phoneNumber)
     dispatch({
       type: 'UPDATE_FORM',
       field: {

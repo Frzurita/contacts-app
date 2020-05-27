@@ -30,7 +30,6 @@ describe('AuthController (e2e)', () => {
           password: '123$%Peaa',
         })
         .expect(201)
-        .expect('')
     })
 
     it('/auth/signup (POST) user exists', async () => {
@@ -41,7 +40,6 @@ describe('AuthController (e2e)', () => {
           password: '123$%Peaa',
         })
         .expect(201)
-        .expect('')
       await request(app.getHttpServer())
         .post('/auth/signup')
         .send({

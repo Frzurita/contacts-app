@@ -75,7 +75,6 @@ export class ContactsController {
     @Body() updateContactDto: CreateUpdateContactDto,
     @GetUser() user: User,
   ): Promise<Contact> {
-    console.log('hi there')
     return this.contactsService.updateContact(id, updateContactDto, user)
   }
 }

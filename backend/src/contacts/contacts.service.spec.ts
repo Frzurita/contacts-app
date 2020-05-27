@@ -18,6 +18,7 @@ const mockContactsRepository = () => ({
   findOne: jest.fn(),
   createContact: jest.fn(),
   delete: jest.fn(),
+  updateContact: jest.fn(),
 })
 
 describe('ContactService', () => {
@@ -43,6 +44,7 @@ describe('ContactService', () => {
 
     const mockFilterDto: GetContactsFilterDto = {
       search: 'Mock contact search',
+      page: 0,
     }
 
     contactsService.getContacts(mockFilterDto, mockUser)
@@ -104,22 +106,14 @@ describe('ContactService', () => {
   })
 
   describe('updateContactStatus', () => {
-    it('retrieves and updates a contact', async () => {
-      const save = jest.fn()
-
-      contactsService.getContactById = jest.fn().mockResolvedValue({
-        save,
-      })
-
-      const result = await contactsService.updateContactStatus(
+    it('update a contact', async () => {
+      expect(contactsRepository.updateContact).not.toHaveBeenCalled()
+      contactsService.updateContact(
         uuidMock,
+        {} as CreateUpdateContactDto,
         mockUser,
       )
-      expect(contactsService.getContactById).toHaveBeenCalledWith(
-        uuidMock,
-        mockUser,
-      )
-      expect(save).toHaveBeenCalled()
+      expect(contactsRepository.updateContact).toHaveBeenCalled()
     })
   })
 })

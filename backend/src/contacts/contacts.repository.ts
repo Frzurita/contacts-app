@@ -23,7 +23,8 @@ export class ContactsRepository extends Repository<Contact> {
     const query = this.createQueryBuilder('contact')
 
     query.where('contact.userId = :userId', { userId: user.id })
-    query.skip(page * paginationSize).take(paginationSize + 1)
+    query.skip(page * paginationSize)
+    query.take(paginationSize + 1)
     query.orderBy('contact.lastName', 'ASC')
 
     if (search) {
@@ -107,7 +108,6 @@ export class ContactsRepository extends Repository<Contact> {
       contact.phoneNumber = phoneNumber
 
       await contact.save()
-      console.log(contact)
       return contact
     } catch (error) {
       this.logger.error(

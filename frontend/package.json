@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "e2e": "cypress open"
   },
   "husky": {
     "hooks": {

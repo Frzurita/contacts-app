@@ -35,7 +35,6 @@ export default function Register(_: RouteComponentProps) {
       navigate('/')
     } catch (error) {
       setLoading(false)
-      console.log(error)
       if (error.data.statusCode) {
         const messageType = typeof error.data.message
         const message = error.data.message

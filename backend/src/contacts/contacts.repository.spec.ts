@@ -33,6 +33,9 @@ describe('ContactsRepository', () => {
         where: jest.fn(),
         andWhere: jest.fn(),
         getMany: jest.fn(),
+        skip: jest.fn(),
+        orderBy: jest.fn(),
+        take: jest.fn(),
       }
 
       contactsRepository.createQueryBuilder = jest
@@ -41,7 +44,7 @@ describe('ContactsRepository', () => {
     })
 
     it('gets contacts using query builder', () => {
-      filterDto = { search: null }
+      filterDto = { search: null, page: 0 }
 
       expect(
         contactsRepository.getContacts(filterDto, mockUser),
@@ -60,7 +63,7 @@ describe('ContactsRepository', () => {
     })
 
     it('gets contacts with search filter', () => {
-      filterDto = { search: 'Test' }
+      filterDto = { search: 'Test', page: 0 }
       contactsRepository.getContacts(filterDto, mockUser)
 
       expect(queryMethods.andWhere).toHaveBeenCalledTimes(1)
@@ -68,13 +71,13 @@ describe('ContactsRepository', () => {
         queryMethods.andWhere,
       ).toHaveBeenCalledWith(
         '(contact.name LIKE :search OR contact.lastName LIKE :search OR contact.email LIKE :search OR contact.phoneNumber LIKE :search)',
-        { search: `%${filterDto.search}%` },
+        { search: `${filterDto.search}%` },
       )
     })
 
     it('throws error if retrieving contacts fails', async () => {
       queryMethods.getMany = jest.fn().mockRejectedValue(new Error('Woops!'))
-      filterDto = { search: null }
+      filterDto = { search: null, page: 0 }
       await expect(
         contactsRepository.getContacts(filterDto, mockUser),
       ).rejects.toThrow(InternalServerErrorException)

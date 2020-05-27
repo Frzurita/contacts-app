@@ -169,7 +169,7 @@ describe('Contactscontroller (e2e)', () => {
     })
     it('/contacts (GET)', async () => {
       const response = await request(app.getHttpServer())
-        .get(`/contacts`)
+        .get(`/contacts?page=0`)
         .set('Authorization', `Bearer ${accessToken}`)
 
       expect(response.status).toBe(200)
@@ -177,16 +177,15 @@ describe('Contactscontroller (e2e)', () => {
     })
     it('/contacts (GET) search non existing user', async () => {
       const response = await request(app.getHttpServer())
-        .get(`/contacts?search=nobody`)
+        .get(`/contacts?page=0&search=nobody`)
         .set('Authorization', `Bearer ${accessToken}`)
       expect(response.status).toBe(200)
       expect(response.body.length).toEqual(0)
     })
     it('/contacts (GET) search existing user', async () => {
       const response = await request(app.getHttpServer())
-        .get(`/contacts?search=666`)
+        .get(`/contacts?page=0&search=example`)
         .set('Authorization', `Bearer ${accessToken}`)
-
       expect(response.status).toBe(200)
       expect(response.body.length).toEqual(1)
     })
