@@ -80,11 +80,10 @@ export default function Editor({
     event.preventDefault()
     try {
       const contact = state.form
-      let payload
       if (id) {
-        payload = await updateContact({ id, ...contact })
+        await updateContact({ id, ...contact })
       } else {
-        payload = await createContact(contact)
+        await createContact(contact)
       }
       navigate(`/`)
     } catch (error) {

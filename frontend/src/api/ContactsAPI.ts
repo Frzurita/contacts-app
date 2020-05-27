@@ -1,18 +1,16 @@
 import API from './APIUtils'
 import { IContact } from '../types'
 
-const encode = encodeURIComponent
-
 type Contacts = Array<IContact>
 
 type Contact = IContact
 
-function limit(count: number, p: number) {
-  return `limit=${count}&offset=${p ? p * count : 0}`
-}
-
-export function getContacts(page: number) {
-  return API.get<Contacts>(`/contacts?${limit(10, page)}`)
+export function getContacts(page: number, contactSearch: String | undefined) {
+  let url = `/contacts?page=${page}`
+  if (contactSearch) {
+    url = url + `&search=${contactSearch}`
+  }
+  return API.get<Contacts>(url)
 }
 
 export function deleteContact(id: string) {

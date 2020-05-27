@@ -18,15 +18,18 @@ export class ContactsRepository extends Repository<Contact> {
     filterDto: GetContactsFilterDto,
     user: User,
   ): Promise<Contact[]> {
-    const { search } = filterDto
+    const paginationSize: number = parseInt(process.env.PAGINATION_SIZE)
+    const { search, page } = filterDto
     const query = this.createQueryBuilder('contact')
 
     query.where('contact.userId = :userId', { userId: user.id })
+    query.skip(page * paginationSize).take(paginationSize + 1)
+    query.orderBy('contact.lastName', 'ASC')
 
     if (search) {
       query.andWhere(
         '(contact.name LIKE :search OR contact.lastName LIKE :search OR contact.email LIKE :search OR contact.phoneNumber LIKE :search)',
-        { search: `%${search}%` },
+        { search: `${search}%` },
       )
     }
 

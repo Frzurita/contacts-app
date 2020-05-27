@@ -1,39 +1,40 @@
 import React from 'react'
 import { ContactListAction } from '../reducers/contactList'
+import { IContact } from '../types'
 
 type ListPaginationProps = {
   page: number
-  contactsCount: number
+  contacts: IContact[]
+  isPaginationFinished: Boolean
   dispatch: React.Dispatch<ContactListAction>
 }
 
 export default function ListPagination({
   page,
-  contactsCount,
+  contacts,
+  isPaginationFinished,
   dispatch,
 }: ListPaginationProps) {
-  const pageNumbers = []
-
-  for (let i = 0; i < Math.ceil(contactsCount / 10); ++i) {
-    pageNumbers.push(i)
+  const buttons: { label: string; number: number }[] = []
+  if (page > 0) {
+    buttons.push({ label: 'Previous', number: page - 1 })
   }
-
-  if (contactsCount <= 10) {
-    return null
+  if (!isPaginationFinished) {
+    buttons.push({ label: 'Next', number: page + 1 })
   }
-
   return (
     <nav>
       <div className="pagination">
-        {pageNumbers.map(number => {
-          const isCurrent = number === page
+        {buttons.map(button => {
           return (
             <li
-              className={isCurrent ? 'page-item active' : 'page-item'}
-              onClick={() => dispatch({ type: 'SET_PAGE', page: number })}
-              key={number}
+              className={'page-item'}
+              onClick={() =>
+                dispatch({ type: 'SET_PAGE', page: button.number })
+              }
+              key={button.number}
             >
-              <button className="page-link">{number + 1}</button>
+              <button className="page-link">{button.label}</button>
             </li>
           )
         })}

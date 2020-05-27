@@ -8,12 +8,16 @@ export type ContactListAction =
     }
   | { type: 'FETCH_CONTACTS_ERROR'; error: string }
   | { type: 'SET_PAGE'; page: number }
+  | { type: 'SET_CONTACT_SEARCH'; contactSearch: string }
+  | { type: 'SET_IS_PAGINATION_FINISHED'; isPaginationFinished: Boolean }
 
 export interface ContactListState {
   contacts: Array<IContact>
   loading: boolean
   error: string | null
   page: number
+  contactSearch: string
+  isPaginationFinished: Boolean
 }
 
 export const initialState: ContactListState = {
@@ -21,6 +25,8 @@ export const initialState: ContactListState = {
   loading: false,
   error: null,
   page: 0,
+  contactSearch: '',
+  isPaginationFinished: false,
 }
 
 export function contactsReducer(
@@ -51,6 +57,16 @@ export function contactsReducer(
       return {
         ...state,
         page: action.page,
+      }
+    case 'SET_CONTACT_SEARCH':
+      return {
+        ...state,
+        contactSearch: action.contactSearch,
+      }
+    case 'SET_IS_PAGINATION_FINISHED':
+      return {
+        ...state,
+        isPaginationFinished: action.isPaginationFinished,
       }
     default:
       return state

@@ -1,6 +1,6 @@
 .banner {
   & h1.logo-font {
-    overflow-x: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     @media (max-width: 600px) {
       font-size: 1.5rem;
