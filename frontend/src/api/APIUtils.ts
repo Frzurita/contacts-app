@@ -11,9 +11,9 @@ axios.interceptors.response.use(
   },
   error => {
     switch (error.response.status) {
-      // case 401:
-      //   navigate('/register')
-      //   break
+      case 401:
+        navigate('/login')
+        break
       case 404:
       case 403:
         navigate('/')
