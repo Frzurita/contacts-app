@@ -112,11 +112,11 @@ describe('AuthController (e2e)', () => {
           username: 'pepe loco',
           password: '123$%Peaa',
         })
-        .expect(401)
+        .expect(400)
         .expect({
-          statusCode: 401,
+          statusCode: 400,
           message: 'Invalid credentials',
-          error: 'Unauthorized',
+          error: 'Bad Request',
         })
 
       await request(app.getHttpServer())
@@ -125,11 +125,11 @@ describe('AuthController (e2e)', () => {
           username: 'pepe',
           password: '123$%Peeeaa',
         })
-        .expect(401)
+        .expect(400)
         .expect({
-          statusCode: 401,
+          statusCode: 400,
           message: 'Invalid credentials',
-          error: 'Unauthorized',
+          error: 'Bad Request',
         })
     })
   })
