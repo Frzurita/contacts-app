@@ -18,7 +18,8 @@
     "test:behaviour": "cross-env NODE_ENV=test jest 2e-spec.ts --runInBand",
     "test:unit:watch": "jest --watch --testPathIgnorePatterns 2e-spec.ts",
     "test:behaviour:watch": "jest --watch 2e-spec.ts --runInBand",
-    "test:unit:cov": "jest --coverage --runInBand",
+    "test:unit:cov": "jest --coverage --testPathIgnorePatterns 2e-spec.ts",
+    "test:cov": "jest --coverage --runInBand",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "cross-env NODE_ENV=test jest --config ./test/jest-e2e.json"
   },

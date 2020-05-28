@@ -22,5 +22,6 @@ This is an example of a product built in nestJS and ReactJS using Postgres as a 
 - Go to the backend folder
 - Run `yarn test:unit` to get the unit tests executed
 - Run `yarn test:behaviour` to get the behavioural tests executed
-- Run `yarn test:cov` to get a coverage report
+- Run `yarn test:unit:cov` to get a unit test coverage report
+- Run `yarn test:cov` to get a full coverage report
 - To run the e2e test. Once you started the project, open a new terminal and go to the frontend folder. Once you are there, run `yarn e2e`
