@@ -43,7 +43,7 @@ describe('Login', () => {
     cy.get('button[type="submit"]').click()
 
     // error message is shown and we remain on the login page
-    cy.contains('.error-messages li', 'Unauthorized: Invalid credentials')
+    cy.contains('.error-messages li', 'Bad Request: Invalid credentials')
     cy.url().should('contain', '/login')
   })
 
