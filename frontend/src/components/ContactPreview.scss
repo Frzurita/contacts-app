@@ -5,7 +5,7 @@ $contact-margin: 20px;
   border-radius: 10px;
   display: flex;
   align-items: center;
-  width: calc(100% - 2 * $contact-margin);
+  width: calc(100% - 2 * #{$contact-margin});
   margin: $contact-margin;
   overflow: hidden;
   border: 2px solid #5cb85c;
