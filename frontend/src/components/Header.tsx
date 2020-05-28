@@ -4,7 +4,6 @@ import { Link, LinkGetProps, LinkProps, navigate } from '@reach/router'
 import useAuth from '../context/auth'
 import { IUser } from '../types'
 import { logout } from '../api/AuthAPI'
-import { APP_NAME } from '../utils'
 
 export default function Header() {
   const {
@@ -22,7 +21,7 @@ export default function Header() {
     <nav className="navbar navbar-light">
       <div className="container">
         <Link to="/" className="navbar-brand">
-          {APP_NAME}
+          {process.env.REACT_APP_APP_NAME}
         </Link>
         {user ? (
           <LoggedInView user={user} handleLogout={handleLogout} />
