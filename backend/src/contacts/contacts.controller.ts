@@ -8,7 +8,6 @@ import {
   Query,
   UsePipes,
   ValidationPipe,
-  ParseIntPipe,
   UseGuards,
   Logger,
   Put,
